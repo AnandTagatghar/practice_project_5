@@ -1,0 +1,19 @@
+<nav class="flex flex-wrap gap-4 justify-end mr-10 p-2">
+    <% if(isOwner == false){ %>
+        <a href="/shop" class="p-2">Shop</a>
+        <% } %>
+
+    <% if(isOwner !=true){ %>
+        <a href="/product/cart" class="p-2">
+            Cart <sup class="text-red-700"><%= user.cart.length %></sup>
+        </a>
+    <% } %>
+
+        <a href="" class="p-2">My Account</a>
+
+        <% if(isOwner){ %>
+            <a href="/owner/logoutOwner" class="bg-red-400 hover:bg-red-500 p-2 rounded-lg text-white">Logout</a>
+        <% }else{ %>
+            <a href="/users/logoutUser" class="bg-red-400 hover:bg-red-500 p-2 rounded-lg text-white">Logout</a>
+        <% } %>
+</nav>

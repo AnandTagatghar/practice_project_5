@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-stone-200 px-10">
+
+    <%- include('partials/successToste') %>
+
+    <div class="flex flex-wrap h-screen">
+        <div class="w-[25%] bg-blue-400">
+            <div class="flex flex-col gap-4">
+                <h1 class="text-blue-300 text-3xl mt-10 ml-2">Brand</h1>
+                <div class="mt-5 text-center">
+                    <span>sort by:</span>
+                    <select name="sort" class="px-2 py-1 bg-transparent rounded-lg border border-zinc-800">
+                        <option value="popular">Popular</option>
+                        <option value="popular2">Popular2</option>
+                        <option value="popular3">Popular3</option>
+                    </select>
+                </div>
+                
+                
+                <div class="mt-16 ml-5 text-start">
+                    <h1 class="py-1">New Collection</h1>
+                    <h1 class="py-1">All Products</h1>
+                    <h1 class="py-1">Discounted Products</h1>
+                </div>
+                
+                
+                <div class="mt-16 ml-8 text-start">
+                    <h1 class="py-1">Fiter By:</h1>
+                    <h1 class="">Availibility</h1>
+                    <h1 class="">Discount</h1>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <div class="w-[60%] bg-blue-300">
+            <%- include('partials/header') %>
+            
+            <div class="mt-8 ml-16 flex flex-wrap gap-4">
+                <div class="w-[30%] bg-black h-44">
+
+                </div>
+
+                <div class="w-[60%] h-44 text-white grid place-content-center">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Total MRP</td>
+                                <td>₹ 1200</td>
+                            </tr>
+                            <tr>
+                                <td>Discount</td>
+                                <td>₹ 200</td>
+                            </tr>
+                            
+                            <tr class="border-t border-zinc-100">
+                                <td>Total Amount</td>
+                                <td>₹ 1000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

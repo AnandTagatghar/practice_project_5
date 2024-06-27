@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+
+<body class="bg-stone-200 px-10">
+    <%- include('partials/successToste') %>
+
+            <div class="flex flex-wrap h-screen">
+                <div class="w-[25%] bg-blue-400">
+                    <div class="flex flex-col gap-4">
+                        <h1 class="text-blue-300 text-3xl mt-10 ml-2">Brand</h1>
+
+                        <div class="mt-16 ml-5 text-start">
+                            <h1 class="py-1">All Products</h1>
+                            <h1 class="py-1">Create New Product</h1>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="w-[70%] bg-blue-300">
+                    <%- include('partials/header') %>
+                        <div class="mt-16 ml-16">
+                            <h1 class="block w-full text-3xl">Create New Product</h1>
+                            <h6 class="block w-full text-xl">Product Details</h6>
+                            <form action="/product/createProduct" method="post" enctype="multipart/form-data"
+                                class="mt-5">
+                                <input type="label" value="Product Image" class="bg-transparent block w-full">
+                                <input type="file" name="image">
+
+                                <div class="mt-16 flex flex-wrap gap-3">
+                                    <input required
+                                        class="min-w-[45%] p-2 bg-slate-200 rounded-lg border-b-4 border-zinc-600 hover:bg-slate-300 outline-none"
+                                        type="text" name="productName" placeholder="Product Name">
+                                    <input required
+                                        class="min-w-[45%] p-2 bg-slate-200 rounded-lg border-b-4 border-zinc-600 hover:bg-slate-300 outline-none"
+                                        type="number" name="productPrice" placeholder="Product Price">
+                                    <input required
+                                        class="min-w-[45%] p-2 bg-slate-200 rounded-lg border-b-4 border-zinc-600 hover:bg-slate-300 outline-none"
+                                        type="number" name="discountPrice" placeholder="Discount Price">
+                                </div>
+
+                                <div class="mt-16 flex flex-wrap gap-3">
+                                    <input type="label" value="Product Details" class="block w-full bg-transparent">
+                                    <input required
+                                        class="min-w-[45%] p-2 bg-slate-200 rounded-lg border-b-4 border-zinc-600 hover:bg-slate-300 outline-none"
+                                        type="text" name="bgColor" placeholder="Background Color">
+                                    <input required
+                                        class="min-w-[45%] p-2 bg-slate-200 rounded-lg border-b-4 border-zinc-600 hover:bg-slate-300 outline-none"
+                                        type="text" name="panelColor" placeholder="Panel Color">
+                                    <input required
+                                        class="min-w-[45%] p-2 bg-slate-200 rounded-lg border-b-4 border-zinc-600 hover:bg-slate-300 outline-none"
+                                        type="text" name="textColor" placeholder="Text Color">
+                                </div>
+
+                                <input type="submit" value="Create New Product"
+                                    class="p-2 bg-blue-500 rounded-full mt-5 text-white hover:bg-blue-600 hover:cursor-pointer active:bg-yellow-400">
+                            </form>
+                        </div>
+                </div>
+            </div>
+
+</body>
+
+</html>

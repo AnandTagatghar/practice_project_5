@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-stone-200 px-10">
+    <%- include('partials/errorToste') %>
+
+            <div class="flex flex-wrap">
+                <div class="w-[50%] h-screen flex flex-col justify-center">
+                    <div class="px-10 text-3xl">
+                        <h1>Welcome to <span class="text-blue-400">Brand</span></h1>
+                        <% if(isOwner){ %>
+                            <h1 class="text-xl">Create owner account</h1>
+                            <% } else { %>
+                                <h1 class="text-xl">Create your account</h1>
+                                <% } %>
+                    </div>
+                    <% if(isOwner){ %>
+                        <form action="/owner/createOwner" method="post" class="flex gap-3 flex-col p-10">
+                            <% }else{ %>
+                                <form action="/users/createUser" method="post" class="flex gap-3 flex-col p-10">
+                                    <% } %>
+                                        <input required
+                                            class="p-2 bg-slate-300 border-b-2 border-zinc-400 rounded-lg hover:bg-slate-100 outline-none"
+                                            type="text" name="fullname" placeholder="fullname">
+                                        <input required
+                                            class="p-2 bg-slate-300 border-b-2 border-zinc-400 rounded-lg hover:bg-slate-100 outline-none"
+                                            type="email" name="email" placeholder="email">
+                                        <input required
+                                            class="p-2 bg-slate-300 border-b-2 border-zinc-400 rounded-lg hover:bg-slate-100 outline-none"
+                                            type="password" name="password" placeholder="password">
+                                        <input type="submit" value="Sign Up"
+                                            class="w-1/2 p-2 bg-blue-600 border-b-2 border-zinc-400 rounded-full hover:bg-blue-400 hover:cursor-pointer active:bg-yellow-200">
+                                </form>
+                </div>
+
+                <div class="hidden w-[10%] h-screen flex flex-col justify-center items-center">
+                    <div
+                        class="bg-blue-300 rounded-full h-[10%] w-full text-3xl text-white grid grid-col place-content-center">
+                        <span class="">OR</span>
+                    </div>
+                </div>
+
+                <div class="w-[50%] h-screen flex flex-col justify-center">
+                    <div class="px-10 text-3xl">
+                        <% if(isOwner){ %>
+                            <h1 class="text-xl">Login Owner Account</h1>
+                            <% }else{ %>
+                                <h1 class="text-xl">Login Your Account</h1>
+                                <% } %>
+                    </div>
+                    <% if(isOwner){ %>
+                        <form action="/owner/loginOwner" method="post" class="flex gap-3 flex-col p-10">
+                            <% }else{ %>
+                                <form action="/users/loginUser" method="post" class="flex gap-3 flex-col p-10">
+                                    <% } %>
+                                        <input required
+                                            class="p-2 bg-slate-300 border-b-2 border-zinc-400 rounded-lg hover:bg-slate-100 outline-none"
+                                            type="email" name="email" placeholder="email">
+                                        <input required
+                                            class="p-2 bg-slate-300 border-b-2 border-zinc-400 rounded-lg hover:bg-slate-100 outline-none"
+                                            type="password" name="password" placeholder="password">
+                                        <input type="submit" value="login"
+                                            class="w-1/2 p-2 bg-blue-600 border-b-2 border-zinc-400 rounded-full hover:bg-blue-400 hover:cursor-pointer active:bg-yellow-200">
+                                </form>
+                </div>
+            </div>
+
+</body>
+
+</html>

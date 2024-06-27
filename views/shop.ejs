@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-stone-200 px-10">
+
+    <%- include('partials/successToste') %>
+
+    <div class="flex flex-wrap h-screen">
+        <div class="w-[25%] bg-blue-400">
+            <div class="flex flex-col gap-4">
+                <h1 class="text-blue-300 text-3xl mt-10 ml-2">Brand</h1>
+                <div class="mt-5 text-center">
+                    <span>sort by:</span>
+                    <select name="sort" class="px-2 py-1 bg-transparent rounded-lg border border-zinc-800">
+                        <option value="popular">Popular</option>
+                        <option value="popular2">Popular2</option>
+                        <option value="popular3">Popular3</option>
+                    </select>
+                </div>
+                
+                
+                <div class="mt-16 ml-5 text-start">
+                    <h1 class="py-1">New Collection</h1>
+                    <h1 class="py-1">All Products</h1>
+                    <h1 class="py-1">Discounted Products</h1>
+                </div>
+                
+                
+                <div class="mt-16 ml-8 text-start">
+                    <h1 class="py-1">Fiter By:</h1>
+                    <h1 class="">Availibility</h1>
+                    <h1 class="">Discount</h1>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        <div class="w-[60%] bg-blue-300">
+            <%- include('partials/header') %>
+            <div class="flex flex-wrap gap-5 mt-8 ml-10">
+                <% if(products.length == 0) { %>
+                    <div class="">No products to show</div>
+                    <% }%>
+
+                <% products.forEach(product=>{ %>
+
+                    <div class="w-52 h-64 bg-red-300 rounded-lg">
+                        <div class="w-full h-[68%] bg-[<%= product.bgColor %>]">
+                            <img src="data:image/jpeg;base64,<%= product.image %>" class="object-cover w-full h-full"
+                                alt="">
+                        </div>
+                        <div class="w-full h-[32%] bg-[<%= product.panelColor %>] flex">
+                            <div class="w-[80%] h-full pl-5 mt-5 text-[<%= product.textColor %>]">
+                                <h1 class="text-xl">
+                                    <%= product.productName %>
+                                </h1>
+                                <h6 class="text-xs">₹ <%= product.productPrice %>
+                                </h6>
+                            </div>
+                            <div class="h-full place-content-center">
+                                <a href="/product/addCart/<%= product._id %>">
+                                    <img src="../images/icons/plus.png" alt=""
+                                        class="w-5 h-5 bg-white rounded-full border-[6px] border-white hover:cursor-pointer">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% }) %>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

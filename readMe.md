@@ -2,6 +2,14 @@ required npm packages are below
 
     * express
     * mongoose
-    * config
-    * debug | command export DEBUG=development:*
     * nodemon
+    * debug | command export DEBUG=development:*
+    * config
+    * bcrypt
+    * dotenv
+    * cookie-parser
+    * jsonwebtoken
+    * ejs
+    * connect-flash
+    * express-session 
+    * multer

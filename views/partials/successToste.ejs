@@ -1,0 +1,13 @@
+<% if(success.length !=0){ %>
+    <div id="successNote" class="flex justify-center">
+        <h1 class="absolute mt-5 text-white bg-[#1eb073] p-2 text-center rounded-lg max-w-50%">
+            <%= success %>
+        </h1>
+    </div>
+    <% } %>
+
+    <script>
+        (setTimeout(() => {
+            document.getElementById("successNote").setAttribute("style", "display: none;");
+        }, 3000))();
+    </script>
