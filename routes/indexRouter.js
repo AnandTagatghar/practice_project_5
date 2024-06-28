@@ -20,12 +20,8 @@ indexRouter.get("/shop", isLoggedIn, async (req, res) => {
   basicVars.products = await productModel.find({});
   basicVars.user = await userModel.findOne({ _id: req.user.id });
 
-  basicVars.products.forEach((item) => {
-      item.image = Buffer.from(item.image).toString("base64");
-  });
-
   basicVars.success = req.flash("success");
-  
+
   res.render("shop", basicVars);
 });
 

@@ -70,14 +70,50 @@ productRouter.get("/cart", isLoggedIn, async (req, res) => {
 
   let user = await userModel.findOne({ _id: req.user.id }).populate("cart");
 
-  user.cart['grandTotal'] = 0;
-  user.cart.forEach(item => {
-    item['totalAmount'] = item.productPrice - item.discountPrice;
-    user.cart['grandTotal'] += item['totalAmount'];
-  })
+  user.cart["grandTotal"] = 0;
+  user.cart.forEach((item) => {
+    item["totalAmount"] = item.productPrice - item.discountPrice;
+    user.cart["grandTotal"] += item["totalAmount"];
+  });
 
   basicVars.user = user;
   res.render("cart", basicVars);
+});
+
+productRouter.get(
+  "/discountedProduct/:userId",
+  isLoggedIn,
+  async (req, res) => {
+    let basicVars = vars();
+
+    let products = await productModel.find({});
+    let user = await userModel.findOne({ _id: req.params.userId });
+
+    let data = products;
+    for (let i = data.length - 1; i >= 0; i--) {
+      dbgr(data[i].discountPrice);
+      if (products[i].discountPrice == 0) {
+        products.splice(products.indexOf(data[i]), 1);
+      }
+    }
+
+    basicVars.products = products;
+    basicVars.user = user;
+    res.render("shop", basicVars);
+  }
+);
+
+productRouter.get("/newProduct/:userId", isLoggedIn, async (req, res) => {
+  let basicVars = vars();
+
+  let products = await productModel.find({});
+  let user = await userModel.findOne({ _id: req.params.userId });
+
+  products.slice(-5);
+
+  basicVars.products = products;
+  basicVars.user = user;
+  res.render("shop", basicVars);
 });
 
 module.exports = productRouter;

@@ -7,8 +7,13 @@
     <% } %>
 
 
-    <script>
-        (setTimeout(() => {
-            document.getElementById("errorNote").setAttribute("style", "display: none;");
-        }, 3000))();
-    </script>
+        <script>
+            (() => {
+                setTimeout(() => {
+                    if(document.getElementById("errorNote")){
+                        document.getElementById("errorNote").setAttribute("style", "display: none;");
+                    }
+                }, 3000);
+            }
+            )();
+        </script>
