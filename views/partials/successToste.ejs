@@ -6,8 +6,13 @@
     </div>
     <% } %>
 
-    <script>
-        (setTimeout(() => {
-            document.getElementById("successNote").setAttribute("style", "display: none;");
-        }, 3000))();
-    </script>
+        <script>
+            (() => {
+                setTimeout(() => {
+                    if (document.getElementById("successNote")) {
+                        document.getElementById("successNote").setAttribute("style", "display: none;");
+                    }
+                }, 3000)
+            }
+            )();
+        </script>

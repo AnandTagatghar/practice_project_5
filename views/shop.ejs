@@ -52,9 +52,9 @@
 
                 <% products.forEach(product=>{ %>
 
-                    <div class="w-52 h-64 bg-red-300 rounded-lg">
+                    <div class="w-52 h-64 ">
                         <div class="w-full h-[68%] bg-[<%= product.bgColor %>]">
-                            <img src="data:image/jpeg;base64,<%= product.image %>" class="object-cover w-full h-full"
+                            <img src="data:image/jpeg;base64,<%= product.image %>" class="p-4 object-full w-full h-full"
                                 alt="">
                         </div>
                         <div class="w-full h-[32%] bg-[<%= product.panelColor %>] flex">

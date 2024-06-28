@@ -47,32 +47,47 @@
             <%- include('partials/header') %>
             
             <div class="mt-8 ml-16 flex flex-wrap gap-4">
-                <div class="w-[30%] bg-black h-44">
+                <% user.cart.forEach(item=>{ %> 
+                    <div class="w-[30%] bg-[<%= item.bgColor %>] h-44 rounded-lg">
+                        <img src="data:image/jpeg;base64,<%= Buffer.from(item.image).toString('base64') %>" class="w-full h-full p-4 object-cover" alt="">
+                    </div>
 
-                </div>
 
-                <div class="w-[60%] h-44 text-white grid place-content-center">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Total MRP</td>
-                                <td>₹ 1200</td>
-                            </tr>
-                            <tr>
-                                <td>Discount</td>
-                                <td>₹ 200</td>
-                            </tr>
-                            
-                            <tr class="border-t border-zinc-100">
-                                <td>Total Amount</td>
-                                <td>₹ 1000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div class="w-[60%] h-44 text-[<%= item.textColor %>] grid place-content-center">
+                        <table>
+                            <th>
+                                <tr>
+                                    <td>Item</td>
+                                    <td>quantity</td>
+                                    <td>Price</td>
+                                </tr>
+                            </th>
+                            <tbody>
+                                <tr>
+                                    <td><%= item.productName %></td>
+                                    <td>1</td>
+                                    <td>₹ <%= item.productPrice %></td>
+                                </tr>
+                                <tr>
+                                    <td>Discount</td>
+                                    <td></td>
+                                    <td>₹ <%= item.discountPrice %></td>
+                                </tr>
+                                
+                                <tr class="border-t border-zinc-100">
+                                    <td>Total Amount</td>
+                                    <td></td>
+                                    <td>₹ <%= (item.totalAmount) %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+
+                <% }) %>
+
+                <h1 class="text-3xl flex justify-center mt-10 w-full">Grand Total = ₹<%= user.cart.grandTotal %></h1>
             </div>
-
         </div>
     </div>
 </body>

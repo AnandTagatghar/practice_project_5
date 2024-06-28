@@ -65,13 +65,19 @@ productRouter.get("/addCart/:productId", isLoggedIn, async (req, res) => {
   }
 });
 
-productRouter.get('/cart', isLoggedIn, async(req, res) => {
-    let basicVars = vars();
+productRouter.get("/cart", isLoggedIn, async (req, res) => {
+  let basicVars = vars();
 
-    let user = await userModel.findOne({ _id: req.user.id }).populate("cart");
+  let user = await userModel.findOne({ _id: req.user.id }).populate("cart");
 
-    basicVars.user = user;
-    res.render('cart', basicVars);
+  user.cart['grandTotal'] = 0;
+  user.cart.forEach(item => {
+    item['totalAmount'] = item.productPrice - item.discountPrice;
+    user.cart['grandTotal'] += item['totalAmount'];
+  })
+
+  basicVars.user = user;
+  res.render("cart", basicVars);
 });
 
 module.exports = productRouter;
